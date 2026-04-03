@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mostafa — Luxury Landing Pages</title>
+<meta name="description" content="Luxury landing pages for brands that understand the value of first impressions. Delivered in 48 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:        #5C0E24;
+  --bg1:       #6B1029;
+  --bg2:       #7A1230;
+  --burgundy:  #F2C4CE;
+  --burgundy2: #FFE4EB;
+  --burg-dim:  rgba(255,228,235,.15);
+  --burg-pale: rgba(255,228,235,.08);
+  --text:      #FFF5F7;
+  --text2:     rgba(255,245,247,.65);
+  --text3:     rgba(255,245,247,.4);
+  --line:      rgba(255,200,215,.18);
+  --line2:     rgba(255,200,215,.3);
+  --serif:     'Bodoni Moda',Georgia,serif;
+  --sans:      'DM Sans',sans-serif;
+  --ease:      cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--burg-dim);color:var(--burgundy2)}
+
+/* GRAIN OVERLAY */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:1}
+
+/* CURSOR */
+#cur{position:fixed;width:7px;height:7px;background:var(--text);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+#cur2{position:fixed;width:30px;height:30px;border:1px solid rgba(255,245,247,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+
+/* ANIMATE */
+.ani{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.ani.show{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.32s}.d4{transition-delay:.44s}.d5{transition-delay:.56s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:500;padding:2rem 6%;display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--ease)}
+nav.s{background:rgba(70,8,28,.92);backdrop-filter:blur(24px);padding:1.3rem 6%;border-bottom:1px solid var(--line2)}
+.nl{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--text);letter-spacing:.02em}
+.nl span{color:var(--burgundy2)}
+.nv{display:flex;gap:3rem;list-style:none}
+.nv a{font-size:.64rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--text3);transition:color .3s}
+.nv a:hover{color:var(--text)}
+.nc{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;padding:.55rem 1.6rem;border:1px solid var(--line2);color:var(--burgundy2);background:transparent;cursor:none;transition:all .3s}
+.nc:hover{background:var(--burgundy);border-color:var(--burgundy);color:var(--text)}
+.hb{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
+.hb span{width:22px;height:1px;background:var(--text);transition:all .3s;display:block}
+.hb.o span:nth-child(1){transform:rotate(45deg) translate(2px,6px)}
+.hb.o span:nth-child(2){opacity:0}
+.hb.o span:nth-child(3){transform:rotate(-45deg) translate(2px,-6px)}
+.mob{position:fixed;inset:0;background:rgba(60,8,22,.97);backdrop-filter:blur(16px);z-index:450;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3rem;opacity:0;pointer-events:none;transition:opacity .4s}
+.mob.o{opacity:1;pointer-events:all}
+.mob a{font-family:var(--serif);font-style:italic;font-size:3rem;color:var(--text);opacity:.5;transition:all .3s}
+.mob a:hover{opacity:1;color:var(--burgundy2)}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 6%;overflow:hidden}
+
+/* Background glow */
+.hero-glow{position:absolute;top:-10%;right:-5%;width:70vw;height:70vw;max-width:900px;max-height:900px;background:radial-gradient(ellipse,rgba(255,255,255,.06) 0%,transparent 65%);pointer-events:none;border-radius:50%}
+.hero-glow2{position:absolute;bottom:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(0,0,0,.2) 0%,transparent 65%);pointer-events:none;border-radius:50%}
+
+.hero-tag{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--burgundy2);opacity:.8;margin-bottom:2.2rem;display:flex;align-items:center;gap:.8rem}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--burgundy);opacity:.6}
+
+.hero h1{font-family:var(--serif);font-style:italic;font-size:clamp(4rem,9vw,10rem);font-weight:400;line-height:.88;letter-spacing:-.02em;color:var(--text);margin-bottom:2.8rem}
+.hero h1 em{color:var(--burgundy2);font-style:italic;display:block}
+
+.hero-sub{font-size:.9rem;font-weight:300;line-height:2;color:var(--text2);max-width:400px;margin-bottom:3.5rem}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-p{font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2.8rem;background:var(--burgundy);color:var(--text);border:none;cursor:none;transition:all .3s;display:inline-block}
+.btn-p:hover{background:var(--burgundy2)}
+.btn-o{font-size:.65rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2.8rem;border:1px solid var(--line2);color:var(--text2);background:transparent;cursor:none;transition:all .3s;display:inline-block}
+.btn-o:hover{border-color:var(--burgundy);color:var(--burgundy2)}
+
+/* Hero bottom stats */
+.hero-stats{position:absolute;bottom:3.5rem;right:6%;display:flex;gap:3rem;align-items:flex-end}
+.hs{text-align:right}
+.hs-n{font-family:var(--serif);font-style:italic;font-size:2.8rem;color:var(--burgundy2);line-height:1}
+.hs-l{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-top:.3rem}
+
+/* scroll hint */
+.scroll-hint{position:absolute;bottom:3.5rem;left:6%;display:flex;align-items:center;gap:.8rem;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text3)}
+.scroll-hint-line{width:40px;height:1px;background:var(--burgundy);opacity:.4;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* DIVIDER */
+.dv{height:1px;background:linear-gradient(to right,transparent,var(--line2) 20%,var(--line2) 80%,transparent);position:relative;z-index:1}
+
+/* ABOUT */
+.about{position:relative;z-index:1;padding:10rem 6%;max-width:1400px;margin:0 auto}
+.sec-label{font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--burgundy2);opacity:.8;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
+.sec-label::before{content:'';width:22px;height:1px;background:var(--burgundy);opacity:.5}
+.sec-h{font-family:var(--serif);font-style:italic;font-size:clamp(2.2rem,4vw,4rem);font-weight:400;line-height:1.1;margin-bottom:1.5rem}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;margin-top:4rem}
+.about-p{font-size:.9rem;line-height:2.1;color:var(--text2);margin-bottom:1.2rem}
+.about-vals{display:flex;flex-direction:column;gap:1px}
+.av{background:var(--bg1);border:1px solid var(--line);padding:1.6rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+.av:hover{background:var(--burg-pale);border-color:var(--line2)}
+.av-n{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--text)}
+.av-t{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text3)}
+
+/* WORK */
+.work{position:relative;z-index:1;padding:10rem 6%;max-width:1400px;margin:0 auto}
+
+/* Full-width row style — editorial */
+.wrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:3rem;padding:3.5rem 0;border-top:1px solid var(--line);text-decoration:none;color:inherit;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.wrow::before{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:var(--burg-pale);transition:width .5s var(--ease);z-index:0}
+.wrow:hover::before{width:100%}
+.wrow:last-child{border-bottom:1px solid var(--line)}
+.wrow>*{position:relative;z-index:1}
+
+.wrow-num{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--burgundy2);opacity:.6;width:3rem}
+.wrow-main{display:flex;flex-direction:column;gap:.6rem}
+.wrow-tag{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy2);opacity:.7}
+.wrow-title{font-family:var(--serif);font-style:italic;font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:1;color:var(--text);transition:color .3s}
+.wrow:hover .wrow-title{color:var(--burgundy2)}
+.wrow-desc{font-size:.82rem;color:var(--text3);line-height:1.7;max-width:520px;margin-top:.4rem}
+.wrow-right{display:flex;flex-direction:column;align-items:flex-end;gap:1rem}
+.wrow-tags{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}
+.wt{font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border:1px solid var(--line2);color:var(--text3)}
+.wrow-arrow{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy2);opacity:0;transition:opacity .3s,transform .3s;display:flex;align-items:center;gap:.5rem}
+.wrow:hover .wrow-arrow{opacity:1;transform:translateX(4px)}
+
+/* PROCESS */
+.process{position:relative;z-index:1;padding:10rem 6%;background:var(--bg1);max-width:100%}
+.process-inner{max-width:1400px;margin:0 auto}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:5rem;background:var(--line)}
+.pc{background:var(--bg1);padding:3rem 2.5rem;transition:background .3s}
+.pc:hover{background:var(--bg2)}
+.pc-n{font-family:var(--serif);font-style:italic;font-size:4rem;color:var(--burgundy);opacity:.15;line-height:1;margin-bottom:1.5rem}
+.pc-t{font-size:.7rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:.8rem}
+.pc-d{font-size:.83rem;line-height:1.9;color:var(--text2)}
+
+/* CONTACT */
+.contact{position:relative;z-index:1;padding:10rem 6%;max-width:1400px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:8rem;align-items:start;margin-top:4rem}
+.contact-info-p{font-size:.9rem;line-height:2;color:var(--text2);margin-bottom:2.5rem}
+.ci{border-bottom:1px solid var(--line);padding:1.1rem 0;display:flex;justify-content:space-between;align-items:center}
+.ci:first-of-type{border-top:1px solid var(--line)}
+.cil{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--burgundy2);opacity:.7}
+.civ{font-size:.85rem;color:var(--text)}
+
+.fg{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.4rem}
+.fll{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3)}
+.fi{width:100%;font-family:var(--sans);font-size:.88rem;font-weight:300;padding:.85rem 1rem;background:var(--bg1);border:1px solid var(--line);color:var(--text);outline:none;transition:border-color .3s;resize:none}
+.fi:focus{border-color:var(--burgundy)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{min-height:120px}
+.fsend{width:100%;font-family:var(--sans);font-size:.65rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;padding:1.1rem;background:var(--burgundy);color:var(--text);border:none;cursor:none;transition:all .3s;margin-top:.5rem}
+.fsend:hover{background:var(--burgundy2)}
+
+#succ{display:none;text-align:center;padding:3rem 0}
+
+/* FOOTER */
+footer{position:relative;z-index:1;padding:3.5rem 6%;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.flogo{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text)}
+.flogo span{color:var(--burgundy2)}
+footer p{font-size:.62rem;letter-spacing:.14em;color:var(--text3)}
+
+/* BTT */
+#btt{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(255,245,247,.1);border:1px solid var(--line2);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:none;opacity:0;pointer-events:none;transition:all .3s;z-index:900}
+#btt.v{opacity:1;pointer-events:all}
+#btt:hover{background:rgba(255,245,247,.2)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.about-grid{grid-template-columns:1fr;gap:4rem}.contact-grid{grid-template-columns:1fr;gap:5rem}.hero-stats{display:none}}
+@media(max-width:768px){.wrow{grid-template-columns:auto 1fr;gap:1.5rem}.wrow-right{display:none}.proc-grid{grid-template-columns:1fr 1fr}.nv,.nc{display:none}.hb{display:flex}.about,.work,.contact{padding:7rem 6%}}
+@media(max-width:480px){.proc-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(3rem,13vw,5rem)}}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nl">M<span>.</span></a>
+  <ul class="nv">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nc" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start a Project</button>
+  <button class="hb" id="hb" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob" id="mob">
+  <a href="#work" onclick="cm()">Work</a>
+  <a href="#process" onclick="cm()">Process</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-tag ani">Available for Projects · 2026</div>
+  <h1 class="ani d1">The craft<br>of the first<br><em>impression.</em></h1>
+  <p class="hero-sub ani d2">Luxury landing pages for brands that understand the value of how they show up online. No templates. No shortcuts. Delivered in 48 hours.</p>
+  <div class="hero-btns ani d3">
+    <a href="#work" class="btn-p">See My Work</a>
+    <a href="#contact" class="btn-o">Get in Touch</a>
+  </div>
+
+  <div class="hero-stats ani d4">
+    <div class="hs">
+      <div class="hs-n">48h</div>
+      <div class="hs-l">Delivery</div>
+    </div>
+    <div class="hs">
+      <div class="hs-n">0</div>
+      <div class="hs-l">Templates</div>
+    </div>
+    <div class="hs">
+      <div class="hs-n">∞</div>
+      <div class="hs-l">Attention to detail</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint ani d5">
+    <div class="scroll-hint-line"></div>
+    Scroll
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <span class="sec-label ani">About</span>
+  <h2 class="sec-h ani">One focus.<br>One standard.</h2>
+  <div class="about-grid">
+    <div class="ani d1">
+      <p class="about-p">I specialise in luxury landing pages — and only luxury landing pages. This isn't a limitation, it's a choice. Focus produces better work than generalism ever could.</p>
+      <p class="about-p">Every project gets my full attention from the first pixel to the final line of code. The result is a page that feels as premium as the brand it represents.</p>
+      <p class="about-p">Based in Egypt. Working with brands worldwide. Remote, fast, and reliable.</p>
+    </div>
+    <div class="about-vals ani d2">
+      <div class="av"><span class="av-n">Design</span><span class="av-t">Custom · Always</span></div>
+      <div class="av"><span class="av-n">Delivery</span><span class="av-t">48 Hours</span></div>
+      <div class="av"><span class="av-n">Code</span><span class="av-t">Clean · No Frameworks</span></div>
+      <div class="av"><span class="av-n">Revisions</span><span class="av-t">One Round · Included</span></div>
+      <div class="av"><span class="av-n">Response</span><span class="av-t">Within 24 Hours</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <span class="sec-label ani">Selected Work</span>
+  <h2 class="sec-h ani">Concept projects.<br>Real craft.</h2>
+
+  <!-- VELDT -->
+  <a class="wrow ani" href="https://veldt-sandy.vercel.app" target="_blank" rel="noopener">
+    <span class="wrow-num">01</span>
+    <div class="wrow-main">
+      <span class="wrow-tag">Luxury Fashion</span>
+      <div class="wrow-title">VELDT</div>
+      <p class="wrow-desc">A luxury fashion house inspired by raw nature — untouched earth, organic textures, and the silence between moments. Editorial design system built entirely without frameworks.</p>
+    </div>
+    <div class="wrow-right">
+      <div class="wrow-tags">
+        <span class="wt">Landing Page</span>
+        <span class="wt">Editorial</span>
+        <span class="wt">Animation</span>
+        <span class="wt">Custom Cursor</span>
+      </div>
+      <span class="wrow-arrow">View Project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </div>
+  </a>
+
+  <!-- APEX -->
+  <a class="wrow ani d1" href="https://apex-c-dusky.vercel.app" target="_blank" rel="noopener">
+    <span class="wrow-num">02</span>
+    <div class="wrow-main">
+      <span class="wrow-tag">Fitness & Performance</span>
+      <div class="wrow-title">APEX</div>
+      <p class="wrow-desc">A premium performance training brand built for serious athletes. Aggressive typography, diagonal layouts, CSS glitch effects, and counter animations — all in vanilla code.</p>
+    </div>
+    <div class="wrow-right">
+      <div class="wrow-tags">
+        <span class="wt">Landing Page</span>
+        <span class="wt">Bold Type</span>
+        <span class="wt">Glitch FX</span>
+        <span class="wt">Counters</span>
+      </div>
+      <span class="wrow-arrow">View Project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </div>
+  </a>
+</section>
+
+<div class="dv"></div>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <span class="sec-label ani">How It Works</span>
+    <h2 class="sec-h ani">From brief to live<br>in 48 hours.</h2>
+    <div class="proc-grid">
+      <div class="pc ani">
+        <div class="pc-n">01</div>
+        <div class="pc-t">Brief</div>
+        <p class="pc-d">Tell me about your brand, your goals, and any references. A 10-minute conversation is enough to start.</p>
+      </div>
+      <div class="pc ani d1">
+        <div class="pc-n">02</div>
+        <div class="pc-t">Design & Build</div>
+        <p class="pc-d">I design and build your page from scratch. No templates, no stock layouts, no shortcuts whatsoever.</p>
+      </div>
+      <div class="pc ani d2">
+        <div class="pc-n">03</div>
+        <div class="pc-t">Review</div>
+        <p class="pc-d">You review the result and request changes. One full revision round is always included in the project.</p>
+      </div>
+      <div class="pc ani d3">
+        <div class="pc-n">04</div>
+        <div class="pc-t">Delivery</div>
+        <p class="pc-d">Your page goes live. Full source code is handed over. The project is yours, completely and forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="sec-label ani">Contact</span>
+  <h2 class="sec-h ani">Let's build something<br>worth remembering.</h2>
+  <div class="contact-grid">
+    <div class="ani">
+      <p class="contact-info-p">I'm available for new projects right now. If you need a landing page that reflects the real quality of your brand — let's talk.</p>
+      <div class="ci"><span class="cil">Email</span><span class="civ">m49152646@gmail.com</span></div>
+      <div class="ci"><span class="cil">Location</span><span class="civ">Egypt · Remote Worldwide</span></div>
+      <div class="ci"><span class="cil">Languages</span><span class="civ">Arabic · English</span></div>
+      <div class="ci"><span class="cil">Response</span><span class="civ">Within 24 hours</span></div>
+      <div class="ci"><span class="cil">Delivery</span><span class="civ">Landing pages in 48 hours</span></div>
+    </div>
+    <div class="ani d2">
+      <form id="cf" onsubmit="snd(event)">
+        <div class="fg"><label class="fll">Your Name</label><input class="fi" type="text" name="name" placeholder="Enter your name" required></div>
+        <div class="fg"><label class="fll">Email Address</label><input class="fi" type="email" name="email" placeholder="Enter your email" required></div>
+        <div class="fg"><label class="fll">Tell me about your project</label><textarea class="fi" name="message" placeholder="What do you need? Brand, product, event..." required></textarea></div>
+        <button type="submit" class="fsend" id="sb">Send Message</button>
+      </form>
+      <div id="succ">
+        <svg viewBox="0 0 60 60" width="72" height="72" style="display:block;margin:0 auto 1.4rem">
+          <circle id="sc" cx="30" cy="30" r="27" fill="none" stroke="var(--burgundy2)" stroke-width="1.5" stroke-dasharray="170" stroke-dashoffset="170" style="transition:stroke-dashoffset .8s cubic-bezier(.25,.46,.45,.94)"/>
+          <polyline id="sp" points="17,31 26,40 43,22" fill="none" stroke="var(--burgundy2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="36" stroke-dashoffset="36" style="transition:stroke-dashoffset .55s cubic-bezier(.25,.46,.45,.94) .75s"/>
+        </svg>
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--burgundy2);margin:0 0 .6rem;text-align:center">Message received.</p>
+        <p style="font-size:.8rem;font-weight:300;color:var(--text3);margin:0;letter-spacing:.1em;text-align:center;text-transform:uppercase">I'll be in touch within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<footer>
+  <span class="flogo">Mostafa<span>.</span></span>
+  <p>Luxury Landing Pages · Egypt · 2026</p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+setInterval(()=>{
+  cx+=(mx-cx)*.13;cy+=(my-cy)*.13;
+  cur2.style.left=cx+'px';cur2.style.top=cy+'px';
+},10);
+document.querySelectorAll('a,button,.wrow,.av,.pc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='4px';cur.style.height='4px';cur2.style.width='46px';cur2.style.height='46px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='7px';cur.style.height='7px';cur2.style.width='30px';cur2.style.height='30px'});
+});
+
+// NAV
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',scrollY>60);
+  document.getElementById('btt').classList.toggle('v',scrollY>400);
+  chk();
+},{passive:true});
+
+// MOBILE
+const hb=document.getElementById('hb'),mob=document.getElementById('mob');
+hb.addEventListener('click',()=>{hb.classList.toggle('o');mob.classList.toggle('o');document.body.style.overflow=mob.classList.contains('o')?'hidden':''});
+function cm(){hb.classList.remove('o');mob.classList.remove('o');document.body.style.overflow=''}
+
+// ANIMATE
+function chk(){document.querySelectorAll('.ani:not(.show)').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-50)el.classList.add('show')})}
+setTimeout(chk,0);setTimeout(chk,200);
+
+// FORM
+async function snd(e){
+  e.preventDefault();
+  const btn=document.getElementById('sb');
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    const res=await fetch('https://formspree.io/f/xgoplvbq',{method:'POST',body:new FormData(document.getElementById('cf')),headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('cf').style.display='none';
+      const s=document.getElementById('succ');s.style.display='block';
+      setTimeout(()=>{
+        document.getElementById('sc').style.strokeDashoffset='0';
+        document.getElementById('sp').style.strokeDashoffset='0';
+      },100);
+    }
+  }catch(err){btn.textContent='Send Message';btn.disabled=false;}
+}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
