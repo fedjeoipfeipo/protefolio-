@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mostafa — Luxury Landing Pages That Convert</title>
+<meta name="description" content="Custom-coded luxury landing pages for premium brands. No templates. Delivered in 48 hours. Based in Egypt, working worldwide.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Mostafa — Luxury Landing Pages That Convert">
+<meta property="og:description" content="Custom-coded luxury landing pages for premium brands. No templates. Delivered in 48 hours.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mostafa — Luxury Landing Pages That Convert">
+<meta name="twitter:description" content="Custom-coded luxury landing pages for premium brands. No templates. Delivered in 48 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:    #0A0705;
+  --ink2:   #1C1410;
+  --ink3:   #2E2420;
+  --gold:   #C9A96E;
+  --gold2:  #E8D5A3;
+  --gold3:  #F5EDD8;
+  --cream:  #FAF7F2;
+  --fog:    rgba(10,7,5,.06);
+  --fog2:   rgba(10,7,5,.12);
+  --line:   rgba(201,169,110,.2);
+  --line2:  rgba(201,169,110,.4);
+  --text:   #1C1410;
+  --text2:  rgba(28,20,16,.65);
+  --text3:  rgba(28,20,16,.38);
+  --serif:  'Cormorant Garamond',Georgia,serif;
+  --sans:   'Outfit',sans-serif;
+  --ease:   cubic-bezier(.16,1,.3,1);
+  --ease2:  cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(201,169,110,.18);color:var(--ink)}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:1;mix-blend-mode:multiply}
+
+/* CURSOR */
+#cur{position:fixed;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s}
+#cur2{position:fixed;width:28px;height:28px;border:1px solid rgba(201,169,110,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .4s var(--ease),height .4s var(--ease)}
+
+/* LOADING SCREEN */
+#loader{position:fixed;inset:0;background:var(--ink);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 1s var(--ease2),visibility 1s}
+#loader.gone{opacity:0;visibility:hidden}
+.ld-inner{text-align:center}
+.ld-name{font-family:var(--serif);font-style:italic;font-size:3rem;color:var(--gold2);letter-spacing:.08em;opacity:0;animation:ldIn 1s var(--ease2) .3s forwards}
+.ld-bar{width:120px;height:1px;background:rgba(201,169,110,.2);margin:1.5rem auto 0;position:relative;overflow:hidden}
+.ld-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold);animation:ldBar 1.2s var(--ease2) .5s forwards}
+@keyframes ldIn{to{opacity:1}}
+@keyframes ldBar{to{left:0}}
+
+/* ANIMATE */
+.ani{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.ani.show{opacity:1;transform:none}
+.ani-l{opacity:0;transform:translateX(-18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.ani-l.show{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}.d5{transition-delay:.58s}.d6{transition-delay:.7s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:500;padding:2.2rem 6%;display:flex;align-items:center;justify-content:space-between;transition:all .6s var(--ease)}
+nav.s{background:rgba(250,247,242,.94);backdrop-filter:blur(20px);padding:1.4rem 6%;border-bottom:1px solid var(--line2)}
+.nl{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--ink);letter-spacing:.04em}
+.nl em{color:var(--gold)}
+.nv{display:flex;gap:3rem;list-style:none}
+.nv a{font-size:.62rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--text3);transition:color .3s}
+.nv a:hover{color:var(--gold)}
+.nc{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;padding:.55rem 1.8rem;border:1px solid var(--line2);color:var(--ink);background:transparent;cursor:none;transition:all .35s;position:relative;overflow:hidden}
+.nc::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease2)}
+.nc:hover::before{transform:scaleX(1)}
+.nc span{position:relative;z-index:1;transition:color .35s}
+.nc:hover span{color:var(--cream)}
+.hb{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
+.hb span{width:22px;height:1px;background:var(--ink);transition:all .3s;display:block}
+.hb.o span:nth-child(1){transform:rotate(45deg) translate(2px,6px)}
+.hb.o span:nth-child(2){opacity:0}
+.hb.o span:nth-child(3){transform:rotate(-45deg) translate(2px,-6px)}
+.mob{position:fixed;inset:0;background:rgba(10,7,5,.97);z-index:450;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity .5s}
+.mob.o{opacity:1;pointer-events:all}
+.mob a{font-family:var(--serif);font-style:italic;font-size:3.5rem;color:var(--cream);opacity:.3;transition:all .4s}
+.mob a:hover{opacity:1;color:var(--gold2)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 6% 10rem;overflow:hidden;background:var(--ink)}
+
+/* Hero bg lines */
+.hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-lines svg{width:100%;height:100%;opacity:.06}
+
+.hero-glow{position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;max-width:800px;background:radial-gradient(ellipse,rgba(201,169,110,.12) 0%,transparent 60%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-30%;left:-15%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(201,169,110,.06) 0%,transparent 60%);pointer-events:none}
+
+.hero-eyebrow{font-size:.56rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);opacity:.9;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold);opacity:.5}
+.hero-eyebrow .dot{width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:.7;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.7}50%{opacity:.2}}
+
+.hero h1{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(4.5rem,9vw,11rem);line-height:.85;letter-spacing:-.02em;color:var(--cream);margin-bottom:3rem}
+.hero h1 .gold{color:var(--gold2);display:block}
+.hero h1 .thin{font-weight:300;opacity:.55;font-size:.75em;display:block;letter-spacing:.04em;font-style:normal;font-family:var(--sans)}
+
+.hero-sub{font-size:.95rem;font-weight:300;line-height:2;color:rgba(250,247,242,.5);max-width:380px;margin-bottom:4rem;border-left:1px solid rgba(201,169,110,.3);padding-left:1.4rem}
+
+.hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap}
+.btn-gold{font-size:.62rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;padding:1rem 3rem;background:var(--gold);color:var(--ink);border:none;cursor:none;transition:all .35s;display:inline-block;position:relative;overflow:hidden}
+.btn-gold::after{content:'';position:absolute;inset:0;background:var(--gold2);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease2)}
+.btn-gold:hover::after{transform:scaleX(1)}
+.btn-gold span{position:relative;z-index:1}
+.btn-ghost{font-size:.62rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;padding:1rem 3rem;border:1px solid rgba(201,169,110,.3);color:rgba(250,247,242,.6);background:transparent;cursor:none;transition:all .35s;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* Hero verdict strip */
+.hero-strip{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(201,169,110,.15);display:grid;grid-template-columns:repeat(4,1fr);background:rgba(10,7,5,.55);backdrop-filter:blur(10px)}
+.hs-item{padding:1.6rem 2.5rem;border-right:1px solid rgba(201,169,110,.1);display:flex;flex-direction:column;gap:.4rem}
+.hs-item:last-child{border-right:none}
+.hs-n{font-family:var(--serif);font-style:italic;font-size:2rem;color:var(--gold2);line-height:1}
+.hs-l{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.3)}
+
+/* scroll */
+.scroll-hint{position:absolute;bottom:7rem;right:6%;display:flex;flex-direction:column;align-items:center;gap:.8rem;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,247,242,.25)}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,rgba(201,169,110,.5));animation:scrollAni 2s ease-in-out infinite}
+@keyframes scrollAni{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* DIVIDER */
+.dv{height:1px;background:linear-gradient(to right,transparent,var(--line2) 20%,var(--line2) 80%,transparent)}
+
+/* ── SECTION: WHY ── */
+.why{padding:10rem 6%;max-width:1400px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:10rem;align-items:start;margin-top:5rem}
+.why-left{}
+.sec-label{font-size:.54rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+.sec-label::before{content:'';width:22px;height:1px;background:var(--gold);opacity:.5}
+.sec-h{font-family:var(--serif);font-style:italic;font-size:clamp(2.4rem,4vw,4.2rem);font-weight:400;line-height:1.05;color:var(--ink)}
+.sec-h em{color:var(--gold)}
+.why-body{font-size:.9rem;line-height:2.1;color:var(--text2);margin-top:1.6rem}
+.why-signature{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--gold);margin-top:2.5rem;opacity:.8}
+
+.why-fears{display:flex;flex-direction:column;gap:1px}
+.wf{background:#fff;border:1px solid var(--line);padding:1.8rem 2rem;display:flex;gap:1.4rem;align-items:flex-start;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.wf::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease)}
+.wf:hover::before{transform:scaleY(1)}
+.wf:hover{border-color:var(--line2);background:var(--gold3)}
+.wf-icon{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold);opacity:.5;flex-shrink:0;line-height:1;margin-top:.1rem}
+.wf-title{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
+.wf-text{font-size:.82rem;line-height:1.8;color:var(--text2)}
+.wf-ans{font-size:.78rem;font-style:italic;color:var(--gold);margin-top:.6rem;font-family:var(--serif);font-size:.95rem}
+
+/* ── SECTION: WORK ── */
+.work{padding:10rem 6%;max-width:1400px;margin:0 auto}
+.work-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;gap:3rem;flex-wrap:wrap}
+.work-note{font-size:.8rem;color:var(--text3);font-style:italic;max-width:260px;line-height:1.8;text-align:right}
+
+/* Project cards — full editorial */
+.proj{display:block;position:relative;margin-bottom:1px;color:inherit;text-decoration:none}
+.proj-inner{display:grid;grid-template-columns:5rem 1fr auto;gap:4rem;align-items:center;padding:4rem 0;border-top:1px solid var(--line);transition:all .4s var(--ease);position:relative}
+.proj-inner::after{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:var(--gold3);opacity:0;transition:opacity .4s var(--ease);z-index:0;pointer-events:none}
+.proj:hover .proj-inner::after{opacity:1}
+.proj:last-child .proj-inner{border-bottom:1px solid var(--line)}
+.proj>*,.proj-inner>*{position:relative;z-index:1}
+
+.proj-num{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--gold);opacity:.5}
+.proj-main{}
+.proj-cat{font-size:.54rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:.8rem}
+.proj-title{font-family:var(--serif);font-style:italic;font-size:clamp(3rem,5.5vw,6rem);font-weight:400;line-height:.9;color:var(--ink);transition:color .3s}
+.proj:hover .proj-title{color:var(--gold)}
+.proj-desc{font-size:.83rem;line-height:1.9;color:var(--text2);margin-top:.9rem;max-width:500px}
+.proj-right{text-align:right}
+.proj-tags{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;margin-bottom:1.2rem}
+.pt{font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid var(--line2);color:var(--text3)}
+.proj-arrow{display:flex;align-items:center;gap:.6rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateX(-8px);transition:all .4s var(--ease);justify-content:flex-end}
+.proj:hover .proj-arrow{opacity:1;transform:translateX(0)}
+.proj-arrow svg{transition:transform .3s}
+.proj:hover .proj-arrow svg{transform:translateX(3px)}
+
+/* ── SECTION: SOCIAL PROOF ── */
+.proof{padding:10rem 6%;background:var(--ink);position:relative;overflow:hidden}
+.proof-inner{max-width:1400px;margin:0 auto}
+.proof-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;background:radial-gradient(ellipse,rgba(201,169,110,.07) 0%,transparent 65%);pointer-events:none}
+.proof .sec-label{color:var(--gold)}
+.proof .sec-h{color:var(--cream)}
+.proof .sec-h em{color:var(--gold2)}
+
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:5rem;background:rgba(201,169,110,.08)}
+.pcard{background:var(--ink);padding:3rem 2.5rem;transition:background .35s}
+.pcard:hover{background:rgba(201,169,110,.05)}
+.pcard-quote{font-family:var(--serif);font-style:italic;font-size:1.05rem;line-height:1.8;color:rgba(250,247,242,.6);margin-bottom:2rem;position:relative}
+.pcard-quote::before{content:'\201C';font-size:3rem;line-height:0;color:var(--gold);opacity:.3;position:absolute;top:.6rem;left:-.3rem}
+.pcard-author{display:flex;align-items:center;gap:1rem;border-top:1px solid rgba(201,169,110,.1);padding-top:1.5rem}
+.pcard-init{width:36px;height:36px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--gold2);flex-shrink:0}
+.pcard-name{font-size:.7rem;font-weight:500;letter-spacing:.08em;color:rgba(250,247,242,.7)}
+.pcard-role{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,247,242,.3);margin-top:.15rem}
+
+/* Stars */
+.stars{display:flex;gap:3px;margin-bottom:1.4rem}
+.star{width:10px;height:10px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+/* Scarcity banner */
+.scar-banner{background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.15);padding:1.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:4rem;flex-wrap:wrap}
+.scar-text{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.8rem}
+.scar-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:blink 1.5s ease-in-out infinite}
+.scar-cta{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.65rem 2rem;border:1px solid rgba(201,169,110,.3);color:var(--gold2);cursor:none;transition:all .3s;background:transparent}
+.scar-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+/* ── SECTION: PROCESS ── */
+.process{padding:10rem 6%;max-width:1400px;margin:0 auto}
+.proc-steps{margin-top:5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.ps{background:var(--cream);padding:3rem 2rem;transition:background .3s}
+.ps:hover{background:#fff}
+.ps-n{font-family:var(--serif);font-style:italic;font-size:4.5rem;color:var(--gold);opacity:.12;line-height:1;margin-bottom:1.8rem}
+.ps-t{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:.9rem}
+.ps-d{font-size:.82rem;line-height:1.9;color:var(--text2)}
+
+/* What you get */
+.gets{display:flex;flex-direction:column;gap:1px;margin-top:4rem}
+.get{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 0;border-bottom:1px solid var(--line);gap:2rem}
+.get:first-child{border-top:1px solid var(--line)}
+.get-label{font-size:.78rem;letter-spacing:.08em;color:var(--text2)}
+.get-val{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-align:right}
+
+/* ── SECTION: CONTACT ── */
+.contact{padding:10rem 6%;background:var(--ink);position:relative;overflow:hidden}
+.contact-inner{max-width:1400px;margin:0 auto}
+.contact-glow{position:absolute;bottom:-20%;right:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(201,169,110,.07) 0%,transparent 65%);pointer-events:none}
+.contact .sec-label{color:var(--gold)}
+.contact .sec-h{color:var(--cream)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:8rem;margin-top:5rem;align-items:start}
+
+.contact-left-p{font-size:.9rem;line-height:2;color:rgba(250,247,242,.45);margin-bottom:3rem;max-width:420px}
+
+.ci{border-bottom:1px solid rgba(201,169,110,.1);padding:1.1rem 0;display:flex;justify-content:space-between;align-items:center}
+.ci:first-of-type{border-top:1px solid rgba(201,169,110,.1)}
+.cil{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.7}
+.civ{font-size:.85rem;color:rgba(250,247,242,.75)}
+
+/* Trust signals */
+.trust-row{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.6rem;font-size:.65rem;letter-spacing:.08em;color:rgba(250,247,242,.3)}
+.trust-icon{width:14px;height:14px;border:1px solid rgba(201,169,110,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-icon::after{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;opacity:.6}
+
+/* Form */
+.fg{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.6rem}
+.fll{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,247,242,.4)}
+.fi{width:100%;font-family:var(--sans);font-size:.88rem;font-weight:300;padding:.9rem 1.1rem;background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.12);color:rgba(250,247,242,.8);outline:none;transition:border-color .3s,background .3s;resize:none}
+.fi:focus{border-color:rgba(201,169,110,.4);background:rgba(201,169,110,.08)}
+.fi::placeholder{color:rgba(250,247,242,.2)}
+textarea.fi{min-height:110px}
+select.fi option{background:var(--ink2);color:var(--cream)}
+.fsend{width:100%;font-family:var(--sans);font-size:.62rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;padding:1.2rem;background:var(--gold);color:var(--ink);border:none;cursor:none;transition:all .35s;margin-top:.5rem;position:relative;overflow:hidden}
+.fsend::after{content:'';position:absolute;inset:0;background:var(--gold2);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease2)}
+.fsend:hover::after{transform:scaleX(1)}
+.fsend span{position:relative;z-index:1}
+
+#succ{display:none;text-align:center;padding:3rem 0}
+
+/* FOOTER */
+footer{background:var(--ink2);border-top:1px solid rgba(201,169,110,.1);padding:3.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.flogo{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:rgba(250,247,242,.9)}
+.flogo em{color:var(--gold)}
+footer p{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.2)}
+.fsocial{display:flex;gap:1.5rem}
+.fsocial a{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.25);transition:color .3s}
+.fsocial a:hover{color:var(--gold)}
+
+/* BTT */
+#btt{position:fixed;bottom:2.5rem;right:2.5rem;width:44px;height:44px;background:var(--ink);border:1px solid rgba(201,169,110,.2);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:none;opacity:0;pointer-events:none;transition:all .4s;z-index:900}
+#btt.v{opacity:1;pointer-events:all}
+#btt:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .why-grid{grid-template-columns:1fr;gap:5rem}
+  .contact-grid{grid-template-columns:1fr;gap:5rem}
+  .hero-strip{display:none}
+  .proof-grid{grid-template-columns:1fr}
+  .proc-steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nv,.nc{display:none}
+  .hb{display:flex}
+  .proj-inner{grid-template-columns:3rem 1fr;gap:1.5rem}
+  .proj-right{display:none}
+  .why,.work,.process,.proof-inner,.contact-inner{padding-left:6%;padding-right:6%}
+  .proc-steps{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(3.2rem,14vw,5rem)}
+  .scar-banner{flex-direction:column;align-items:flex-start}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mostafa",
+  "jobTitle": "Landing Page Designer & Developer",
+  "description": "Custom-coded luxury landing pages for premium brands. No templates. Delivered in 48 hours.",
+  "email": "m49152646@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "EG"
+  },
+  "url": "https://mostafa.dev",
+  "sameAs": []
+}
+</script>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-inner">
+    <div class="ld-name">Mostafa.</div>
+    <div class="ld-bar"></div>
+  </div>
+</div>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nl">M<em>.</em></a>
+  <ul class="nv">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nc" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span>Start a Project</span></button>
+  <button class="hb" id="hb" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob" id="mob">
+  <a href="#work" onclick="cm()">Work</a>
+  <a href="#process" onclick="cm()">Process</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lines">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="300" x2="1440" y2="300" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="0" y1="600" x2="1440" y2="600" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="360" y1="0" x2="360" y2="900" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="720" y1="0" x2="720" y2="900" stroke="#C9A96E" stroke-width="0.5"/>
+      <line x1="1080" y1="0" x2="1080" y2="900" stroke="#C9A96E" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-eyebrow ani">
+    <span class="dot"></span>
+    Available for new projects · 2026
+  </div>
+
+  <h1 class="ani d1">
+    The page they<br>
+    <em class="gold">screenshot</em>
+    <span class="thin">and send to someone.</span>
+  </h1>
+
+  <p class="hero-sub ani d2">Luxury landing pages for founders who know the difference between a page that looks expensive and one that actually is. Built from code, not templates.</p>
+
+  <div class="hero-btns ani d3">
+    <a href="#work" class="btn-gold"><span>See the Work</span></a>
+    <a href="#contact" class="btn-ghost">Start a Project</a>
+  </div>
+
+  <div class="hero-strip">
+    <div class="hs-item ani d2">
+      <div class="hs-n">48h</div>
+      <div class="hs-l">Delivery Time</div>
+    </div>
+    <div class="hs-item ani d3">
+      <div class="hs-n">0</div>
+      <div class="hs-l">Templates Used</div>
+    </div>
+    <div class="hs-item ani d4">
+      <div class="hs-n">100%</div>
+      <div class="hs-l">Custom Code</div>
+    </div>
+    <div class="hs-item ani d5">
+      <div class="hs-n">∞</div>
+      <div class="hs-l">Attention to Detail</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint ani d6">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- WHY / FEARS SECTION -->
+<section class="why" id="about">
+  <div class="why-grid">
+    <div>
+      <span class="sec-label ani-l">The honest truth</span>
+      <h2 class="sec-h ani">Most pages<br>look expensive.<br><em>Yours will be.</em></h2>
+      <p class="why-body ani d1">Most landing pages describe the brand. This one is supposed to be the brand. There's a difference — and most designers never actually find it.</p>
+      <p class="why-body ani d2">Based in Egypt. Clients across three continents. I work around your timeline, your brief, and your deadline. Not mine.</p>
+      <div class="why-signature ani d3">— Mostafa</div>
+    </div>
+
+    <div class="why-fears ani d1">
+      <!-- Fear 1 -->
+      <div class="wf">
+        <div class="wf-icon">?</div>
+        <div>
+          <div class="wf-title">Will it actually look premium?</div>
+          <p class="wf-text">You've seen "luxury" pages built on Elementor. You know what they look like. They all look the same.</p>
+          <p class="wf-ans">Every line of this is hand-written code. No themes. No drag-and-drop. Nothing recycled from another client.</p>
+        </div>
+      </div>
+      <!-- Fear 2 -->
+      <div class="wf">
+        <div class="wf-icon">?</div>
+        <div>
+          <div class="wf-title">What if I don't like the result?</div>
+          <p class="wf-text">You've paid for something before and had no real way to push back. That stays with you.</p>
+          <p class="wf-ans">One full revision round is always included. Tell me what's off. I'll fix it. No friction, no invoice.</p>
+        </div>
+      </div>
+      <!-- Fear 3 -->
+      <div class="wf">
+        <div class="wf-icon">?</div>
+        <div>
+          <div class="wf-title">Is 48 hours realistic?</div>
+          <p class="wf-text">"Fast delivery" has burned you before. Usually means something got skipped.</p>
+          <p class="wf-ans">48 hours from approved brief to live page. Not a soft estimate. That's the actual commitment.</p>
+        </div>
+      </div>
+      <!-- Fear 4 -->
+      <div class="wf">
+        <div class="wf-icon">?</div>
+        <div>
+          <div class="wf-title">Will my brand's soul translate?</div>
+          <p class="wf-text">Most designers start building before they actually understand the brand. Safe output. Forgettable result.</p>
+          <p class="wf-ans">The brief call is 10 minutes. I don't touch the code until I know what makes your brand different from everything else in your space.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-intro">
+    <div>
+      <span class="sec-label ani-l">Selected Work</span>
+      <h2 class="sec-h ani">Concept projects.<br><em>Built like real ones.</em></h2>
+    </div>
+    <p class="work-note ani d2">Two concept projects built to demonstrate range and craft. Real client work available on request.</p>
+  </div>
+
+  <!-- VELDT -->
+  <a class="proj ani" href="https://vvnmk.vercel.app/" target="_blank" rel="noopener">
+    <div class="proj-inner">
+      <span class="proj-num">01</span>
+      <div class="proj-main">
+        <div class="proj-cat">Luxury Fashion · Editorial Design</div>
+        <div class="proj-title">VELDT</div>
+        <p class="proj-desc">A luxury fashion house built around raw, untouched earth. The brief was "make it feel permanent." Custom cursor, editorial type, zero frameworks — nothing off the shelf.</p>
+      </div>
+      <div class="proj-right">
+        <div class="proj-tags">
+          <span class="pt">Landing Page</span>
+          <span class="pt">Editorial</span>
+          <span class="pt">Animation</span>
+          <span class="pt">Custom Cursor</span>
+        </div>
+        <div class="proj-arrow">View Project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- APEX -->
+  <a class="proj ani d1" href="https://vvn-sandy.vercel.app/" target="_blank" rel="noopener">
+    <div class="proj-inner">
+      <span class="proj-num">02</span>
+      <div class="proj-main">
+        <div class="proj-cat">Fitness & Performance · Conversion Design</div>
+        <div class="proj-title">APEX</div>
+        <p class="proj-desc">Performance training brand for serious athletes. Aggressive type, counter animations, scarcity built into the structure. The kind of page that makes you feel like you're already behind if you leave without signing up.</p>
+      </div>
+      <div class="proj-right">
+        <div class="proj-tags">
+          <span class="pt">Landing Page</span>
+          <span class="pt">Conversion</span>
+          <span class="pt">Glitch FX</span>
+          <span class="pt">Psychology</span>
+        </div>
+        <div class="proj-arrow">View Project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </a>
+</section>
+
+<div class="dv"></div>
+
+<!-- SOCIAL PROOF -->
+<section class="proof" id="proof">
+  <div class="proof-glow"></div>
+  <div class="proof-inner">
+    <span class="sec-label ani">What it feels like</span>
+    <h2 class="sec-h ani">The brands that work with me<br><em>don't go looking again.</em></h2>
+
+    <div class="proof-grid">
+      <div class="pcard ani">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="pcard-quote">We'd worked with two designers before Mostafa. The difference wasn't the aesthetics — it was that the page actually felt like our brand. That hadn't happened before.</p>
+        <div class="pcard-author">
+          <div class="pcard-init">S</div>
+          <div>
+            <div class="pcard-name">Sara K.</div>
+            <div class="pcard-role">Founder, Luxury Skincare Brand</div>
+          </div>
+        </div>
+      </div>
+      <div class="pcard ani d1">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="pcard-quote">Delivered in 44 hours. I kept waiting for something to go wrong. Nothing did. Clean code, strong design, and the revision round took one email.</p>
+        <div class="pcard-author">
+          <div class="pcard-init">R</div>
+          <div>
+            <div class="pcard-name">Rami A.</div>
+            <div class="pcard-role">CEO, Premium Coaching Brand</div>
+          </div>
+        </div>
+      </div>
+      <div class="pcard ani d2">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="pcard-quote">Everyone else sent me a template with our logo dropped in. Mostafa actually asked questions first. The page shows that.</p>
+        <div class="pcard-author">
+          <div class="pcard-init">L</div>
+          <div>
+            <div class="pcard-name">Layla M.</div>
+            <div class="pcard-role">Creative Director, Fashion House</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scar-banner ani">
+      <div class="scar-text"><span class="scar-dot"></span> Taking on 2 new projects this month — 1 spot remaining</div>
+      <button class="scar-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Claim Your Spot</button>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <span class="sec-label ani-l">The Process</span>
+  <h2 class="sec-h ani">From brief to live<br><em>in 48 hours.</em></h2>
+
+  <div class="proc-steps">
+    <div class="ps ani">
+      <div class="ps-n">01</div>
+      <div class="ps-t">Brief</div>
+      <p class="ps-d">10 minutes. Your brand, your audience, what the page needs to actually do. That's enough to start building something real.</p>
+    </div>
+    <div class="ps ani d1">
+      <div class="ps-n">02</div>
+      <div class="ps-t">Design & Build</div>
+      <p class="ps-d">Built from scratch, for your brand specifically. The code is written for this project. Nothing gets reused from the last one.</p>
+    </div>
+    <div class="ps ani d2">
+      <div class="ps-n">03</div>
+      <div class="ps-t">Review</div>
+      <p class="ps-d">You review it. One full revision round is part of the deal — not an add-on. Tell me what's off. I fix it.</p>
+    </div>
+    <div class="ps ani d3">
+      <div class="ps-n">04</div>
+      <div class="ps-t">Yours Forever</div>
+      <p class="ps-d">You get the full source code. No subscription, no dependency on me. It's yours — do whatever you want with it.</p>
+    </div>
+  </div>
+
+  <div class="gets ani d2">
+    <div class="get"><span class="get-label">Custom design — no templates</span><span class="get-val">Always included</span></div>
+    <div class="get"><span class="get-label">Full source code ownership</span><span class="get-val">Yours forever</span></div>
+    <div class="get"><span class="get-label">Revision round</span><span class="get-val">One round included</span></div>
+    <div class="get"><span class="get-label">Delivery time</span><span class="get-val">48 hours</span></div>
+    <div class="get"><span class="get-label">Response time</span><span class="get-val">Within 24 hours</span></div>
+    <div class="get"><span class="get-label">Mobile responsive</span><span class="get-val">Always</span></div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <span class="sec-label ani">Let's talk</span>
+    <h2 class="sec-h ani">Ready to build something<br><em>that actually looks like you?</em></h2>
+
+    <div class="contact-grid">
+      <div class="ani d1">
+        <p class="contact-left-p">If your brand is serious and your current page doesn't show that — let's fix it. Fill in what you need and I'll reply within 24 hours.</p>
+        <div class="ci"><span class="cil">Email</span><span class="civ">m49152646@gmail.com</span></div>
+        <div class="ci"><span class="cil">Location</span><span class="civ">Egypt · Remote Worldwide</span></div>
+        <div class="ci"><span class="cil">Languages</span><span class="civ">Arabic · English</span></div>
+        <div class="ci"><span class="cil">Response</span><span class="civ">Within 24 hours</span></div>
+        <div class="ci"><span class="cil">Delivery</span><span class="civ">Landing pages in 48 hours</span></div>
+        <div class="trust-row">
+          <div class="trust-item"><div class="trust-icon"></div>No long-term commitment</div>
+          <div class="trust-item"><div class="trust-icon"></div>Revision included</div>
+          <div class="trust-item"><div class="trust-icon"></div>Full code ownership</div>
+        </div>
+      </div>
+
+      <div class="ani d2">
+        <form id="cf" onsubmit="snd(event)">
+          <div class="fg"><label class="fll">Your Name</label><input class="fi" type="text" name="name" placeholder="Your name" required></div>
+          <div class="fg"><label class="fll">Email Address</label><input class="fi" type="email" name="email" placeholder="your@email.com" required></div>
+          <div class="fg"><label class="fll">Tell me about your brand</label><textarea class="fi" name="message" placeholder="Your brand, your audience, what you need the page to do..." required></textarea></div>
+          <button type="submit" class="fsend" id="sb"><span>Send — I'll Reply Within 24 Hours</span></button>
+        </form>
+        <div id="succ">
+          <svg viewBox="0 0 60 60" width="64" height="64" style="display:block;margin:0 auto 1.4rem">
+            <circle id="sc" cx="30" cy="30" r="27" fill="none" stroke="#C9A96E" stroke-width="1" stroke-dasharray="170" stroke-dashoffset="170" style="transition:stroke-dashoffset .9s cubic-bezier(.25,.46,.45,.94)"/>
+            <polyline id="sp" points="17,31 26,40 43,22" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="36" stroke-dashoffset="36" style="transition:stroke-dashoffset .55s cubic-bezier(.25,.46,.45,.94) .85s"/>
+          </svg>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--gold2);margin:0 0 .6rem;text-align:center">Message received.</p>
+          <p style="font-size:.78rem;font-weight:300;color:rgba(250,247,242,.3);margin:0;letter-spacing:.12em;text-align:center;text-transform:uppercase">I'll be in touch within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="flogo">Mostafa<em>.</em></span>
+  <p>Luxury Landing Pages · Egypt · 2026</p>
+  <div class="fsocial">
+    <a href="#contact">Behance</a>
+    <a href="#contact">Instagram</a>
+    <a href="#contact">LinkedIn</a>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+// LOADER
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('gone'),1400);
+});
+
+// CURSOR
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+setInterval(()=>{cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px'},10);
+document.querySelectorAll('a,button,.proj,.wf,.ps,.pcard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='3px';cur.style.height='3px';cur2.style.width='50px';cur2.style.height='50px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';cur2.style.width='28px';cur2.style.height='28px'});
+});
+
+// NAV
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',scrollY>60);
+  document.getElementById('btt').classList.toggle('v',scrollY>400);
+  chk();
+},{passive:true});
+
+// MOBILE
+const hb=document.getElementById('hb'),mob=document.getElementById('mob');
+hb.addEventListener('click',()=>{hb.classList.toggle('o');mob.classList.toggle('o');document.body.style.overflow=mob.classList.contains('o')?'hidden':''});
+function cm(){hb.classList.remove('o');mob.classList.remove('o');document.body.style.overflow=''}
+
+// ANIMATE ON SCROLL
+function chk(){document.querySelectorAll('.ani:not(.show),.ani-l:not(.show)').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add('show')})}
+setTimeout(chk,0);setTimeout(chk,300);
+
+// FORM
+async function snd(e){
+  e.preventDefault();
+  const btn=document.getElementById('sb');
+  btn.querySelector('span').textContent='Sending...';btn.disabled=true;
+  try{
+    const res=await fetch('https://formspree.io/f/xgoplvbq',{method:'POST',body:new FormData(document.getElementById('cf')),headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('cf').style.display='none';
+      const s=document.getElementById('succ');s.style.display='block';
+      setTimeout(()=>{document.getElementById('sc').style.strokeDashoffset='0';document.getElementById('sp').style.strokeDashoffset='0'},100);
+    }
+  }catch(err){btn.querySelector('span').textContent='Send — I\'ll Reply Within 24 Hours';btn.disabled=false;}
+}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
