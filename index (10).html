@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mostafa Yasser — CRO Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000000;
+    --off-black: #0a0a0a;
+    --gold: #ffffff;
+    --gold-dim: #6e6e73;
+    --white: #f5f5f7;
+    --white-dim: rgba(245,245,247,0.56);
+    --white-faint: rgba(245,245,247,0.14);
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--serif);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: all 0.18s ease;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 60px;
+    mix-blend-mode: normal;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* Hero */
+  #hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 60px 80px;
+    overflow: hidden;
+  }
+
+  #three-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+  }
+
+  .hero-name {
+    font-size: clamp(64px, 9vw, 140px);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-tagline {
+    margin-top: 32px;
+    font-size: clamp(14px, 1.4vw, 18px);
+    font-weight: 300;
+    color: var(--white-dim);
+    max-width: 480px;
+    line-height: 1.7;
+    opacity: 0;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 80px;
+    right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+  }
+
+  .hero-scroll span {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--white-faint);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* Divider */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    opacity: 0.3;
+    margin: 0 60px;
+    width: calc(100% - 120px);
+  }
+
+  /* Sections shared */
+  section {
+    padding: 120px 60px;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold-dim);
+  }
+
+  /* Services */
+  #services {
+    background: var(--off-black);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--white-faint);
+    border: 1px solid var(--white-faint);
+  }
+
+  .service-card {
+    background: var(--off-black);
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: #141414; }
+
+  .service-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+  }
+
+  .service-title {
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .service-title em { font-style: italic; color: var(--gold); }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.8;
+    font-family: var(--mono);
+    font-weight: 300;
+  }
+
+  /* Case Studies */
+  #work { background: var(--black); }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+
+  .work-title {
+    font-size: clamp(40px, 5vw, 80px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .work-title em { font-style: italic; color: var(--gold); }
+
+  .case-list { display: flex; flex-direction: column; gap: 2px; }
+
+  .case-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    align-items: center;
+    gap: 40px;
+    padding: 36px 44px;
+    background: var(--off-black);
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, background 0.4s;
+    cursor: none;
+  }
+
+  .case-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .case-item:hover { border-color: var(--gold-dim); background: #121212; }
+  .case-item:hover::after { transform: translateX(100%); }
+
+  .case-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+  }
+
+  .case-brand {
+    font-size: clamp(22px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  .case-brand em { font-style: italic; }
+
+  .case-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--white-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .case-arrow {
+    font-size: 18px;
+    color: var(--gold);
+    transform: rotate(-45deg);
+    transition: transform 0.3s;
+    opacity: 0;
+  }
+
+  .case-item:hover .case-arrow {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+
+  /* Numbers */
+  #numbers {
+    background: var(--off-black);
+    text-align: center;
+  }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .number-item {}
+
+  .number-val {
+    font-size: clamp(52px, 7vw, 100px);
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-style: italic;
+  }
+
+  .number-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--white-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* Contact */
+  #contact {
+    background: var(--black);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg-text {
+    position: absolute;
+    font-size: clamp(100px, 18vw, 260px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white-faint);
+    pointer-events: none;
+    letter-spacing: -0.04em;
+    user-select: none;
+    opacity: 0.06;
+    white-space: nowrap;
+  }
+
+  .contact-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-title {
+    font-size: clamp(40px, 6vw, 96px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-title em { font-style: italic; color: var(--gold); }
+
+  .contact-links {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--white-faint);
+    padding-bottom: 6px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .contact-link:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* Footer */
+  footer {
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--white-faint);
+  }
+
+  footer span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--white-faint);
+    letter-spacing: 0.15em;
+  }
+
+  /* Reveal animation base */
+  .reveal { opacity: 0; transform: translateY(40px); }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 24px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    #hero { padding: 0 24px 60px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .numbers-grid { grid-template-columns: 1fr; gap: 40px; }
+    .case-item { grid-template-columns: 50px 1fr; gap: 16px; }
+    .case-tag, .case-arrow { display: none; }
+    .contact-links { flex-direction: column; gap: 20px; align-items: center; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 768px) {
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <div class="nav-logo">MY — CRO</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="three-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-label">CRO Consultant — Cairo</div>
+    <h1 class="hero-name">
+      Mostafa<br/><em>Yasser</em>
+    </h1>
+    <p class="hero-tagline">
+      I find where brands lose sales.<br/>
+      One page. One word. One color at a time.
+    </p>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Do</div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3 class="service-title">CRO <em>Audit</em></h3>
+      <p class="service-desc">A full read of your page — copy, structure, trust signals, CTA clarity. You get a written breakdown of exactly where visitors leave and why.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Landing Page <em>Strategy</em></h3>
+      <p class="service-desc">Repositioning your page around the psychology of your buyer. Not a redesign. A rethink. Built for luxury and high-consideration products.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <h3 class="service-title">Brand <em>Psychology</em></h3>
+      <p class="service-desc">Translating what makes your brand irreplaceable into the words and structure a page visitor actually feels before they read.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header">
+    <h2 class="work-title reveal">Selected<br/><em>Work</em></h2>
+  </div>
+  <div class="case-list">
+    <a href="https://patek-philiipe.vercel.app/" target="_blank" class="case-item reveal">
+      <span class="case-num">01</span>
+      <span class="case-brand">Patek <em>Philippe</em></span>
+      <span class="case-tag">Altercasting — Identity-Based Selling</span>
+      <span class="case-arrow">→</span>
+    </a>
+    <a href="https://chanel-mauve.vercel.app/" target="_blank" class="case-item reveal">
+      <span class="case-num">02</span>
+      <span class="case-brand"><em>Chanel</em></span>
+      <span class="case-tag">Luxury Paradox / Scarcity</span>
+      <span class="case-arrow">→</span>
+    </a>
+    <a href="https://hermes-gamma-lac.vercel.app/" target="_blank" class="case-item reveal">
+      <span class="case-num">03</span>
+      <span class="case-brand"><em>Hermès</em></span>
+      <span class="case-tag">Heritage Craft / Exclusivity</span>
+      <span class="case-arrow">→</span>
+    </a>
+    <a href="https://apple-omega-beryl.vercel.app/" target="_blank" class="case-item reveal">
+      <span class="case-num">04</span>
+      <span class="case-brand"><em>Apple</em></span>
+      <span class="case-tag">Simplicity / Cognitive Ease</span>
+      <span class="case-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="numbers">
+  <div class="section-label">How I Work</div>
+  <div class="numbers-grid">
+    <div class="number-item reveal">
+      <div class="number-val" style="font-size:clamp(28px,3vw,44px);">01</div>
+      <div class="number-label">Read the page like a buyer<br/>would — not like a designer.</div>
+    </div>
+    <div class="number-item reveal">
+      <div class="number-val" style="font-size:clamp(28px,3vw,44px);">02</div>
+      <div class="number-label">Change one thing at a time.<br/>Know exactly what worked.</div>
+    </div>
+    <div class="number-item reveal">
+      <div class="number-val" style="font-size:clamp(28px,3vw,44px);">03</div>
+      <div class="number-label">Every word earns its place,<br/>or it gets cut.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg-text">Contact</div>
+  <div class="contact-label">Let's Work Together</div>
+  <h2 class="contact-title reveal">Start a<br/><em>Conversation</em></h2>
+  <div class="contact-links reveal">
+    <a href="mailto:m49152646@gmail.com" class="contact-link">m49152646@gmail.com</a>
+    <a href="https://www.linkedin.com/in/mostafa-yasser-92498b359" target="_blank" class="contact-link">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Mostafa Yasser</span>
+  <span>CRO Consultant — Cairo, Egypt</span>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // === CUSTOM CURSOR ===
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  const isTouch = window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window;
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  if (!isTouch) {
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.transform = 'translate(-50%,-50%) scale(1.8)';
+      ring.style.borderColor = 'rgba(255,255,255,0.6)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.borderColor = 'rgba(110,110,115,0.6)';
+    });
+  });
+  }
+
+  // === THREE.JS HERO ===
+  const canvas = document.getElementById('three-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  // Gold particle field
+  const count = 1800;
+  const positions = new Float32Array(count * 3);
+  const sizes = new Float32Array(count);
+
+  for (let i = 0; i < count; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 18;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 18;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
+    sizes[i] = Math.random() * 2.5 + 0.5;
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+  const mat = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.03,
+    transparent: true,
+    opacity: 0.55,
+    sizeAttenuation: true,
+  });
+
+  const particles = new THREE.Points(geo, mat);
+  scene.add(particles);
+
+  // Subtle grid lines
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x6e6e73, transparent: true, opacity: 0.08 });
+  for (let i = -5; i <= 5; i++) {
+    const hGeo = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(-10, i * 1.5, -3), new THREE.Vector3(10, i * 1.5, -3)
+    ]);
+    scene.add(new THREE.Line(hGeo, lineMat));
+  }
+
+  let mouseNX = 0, mouseNY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseNX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseNY = -(e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  function animThree() {
+    requestAnimationFrame(animThree);
+    const t = Date.now() * 0.0004;
+    particles.rotation.y = t * 0.15 + mouseNX * 0.08;
+    particles.rotation.x = mouseNY * 0.06;
+    mat.opacity = 0.45 + Math.sin(t * 2) * 0.08;
+    renderer.render(scene, camera);
+  }
+  animThree();
+
+  // === GSAP HERO ENTRANCE ===
+  const tl = gsap.timeline({ delay: 0.3 });
+  tl.to('.hero-label', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' })
+    .to('.hero-name',  { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, '-=0.6')
+    .to('.hero-tagline', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8');
+
+  // Hero elements start displaced
+  gsap.set(['.hero-label','.hero-name','.hero-tagline'], { y: 30 });
+
+  // === SCROLL REVEALS ===
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+
+  // === COUNTER ANIMATION ===
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = +el.dataset.target;
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 2,
+          ease: 'power2.out',
+          onUpdate: function() {
+            el.textContent = Math.round(this.targets()[0].val);
+          }
+        });
+      }
+    });
+  });
+
+  // === SMOOTH SECTION TRANSITIONS ===
+  gsap.utils.toArray('section').forEach(sec => {
+    gsap.fromTo(sec,
+      { backgroundPosition: '0 0' },
+      {
+        backgroundPosition: '0 -30px',
+        ease: 'none',
+        scrollTrigger: { trigger: sec, scrub: true }
+      }
+    );
+  });
+
+</script>
+</body>
+</html>
